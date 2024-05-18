@@ -1,0 +1,4 @@
+#Copy subreddits you moderate to clipboard
+#navigate to https://www.reddit.com/subreddits/mine/moderator.json
+#make bookmarklet
+javascript:(function(){try{const text=document.body.textContent;const regex=/"display_name_prefixed":\s*"r\/([^"]+)"/g;let match;const subreddits=[];while((match=regex.exec(text))!==null){subreddits.push(match[1]);}const csvContent=subreddits.join(',');const textarea=document.createElement('textarea');textarea.value=csvContent;document.body.appendChild(textarea);textarea.select();document.execCommand('copy');document.body.removeChild(textarea);alert('Subreddits copied to clipboard!');}catch(e){alert('Failed to copy subreddits. Ensure you are on the correct page and try again.');console.error(e);}})();
