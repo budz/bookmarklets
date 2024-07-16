@@ -1,0 +1,17 @@
+/*
+ * YouTube Fullscreen Popup Bookmarklet
+ *
+ * Description:
+ * This bookmarklet opens the current YouTube video in a new, resizable window
+ * where the video takes up 100% of the window. It extracts the video ID from
+ * the URL of the YouTube video you're watching and constructs an embedded
+ * player in a new window.
+ *
+ * Usage:
+ * 1. Copy the entire code of this bookmarklet.
+ * 2. Create a new bookmark in your browser.
+ * 3. Paste the copied code into the URL field of the bookmark.
+ * 4. When watching a YouTube video, click the bookmarklet to launch the video
+ *    in a new, resizable window with the video taking up 100% of the window.
+ */
+javascript:(function(){var videoId=window.location.search.split('v=')[1];if(videoId){var ampersandPosition=videoId.indexOf('&');if(ampersandPosition!=-1){videoId=videoId.substring(0,ampersandPosition);}var newWindow=window.open('https://www.youtube.com/embed/'+videoId+'?autoplay=1','_blank','width=800,height=600');newWindow.document.write('<style>body{margin:0;}iframe{width:100%;height:100%;border:none;}</style><iframe src="https://www.youtube.com/embed/'+videoId+'?autoplay=1&rel=0" allow="autoplay; fullscreen"></iframe>');}else{alert('Not a valid YouTube video URL.');}})();
